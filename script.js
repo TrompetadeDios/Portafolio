@@ -4,15 +4,11 @@
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        // Evita el comportamiento de salto predeterminado del navegador
         e.preventDefault();
-
-        // Obtiene el destino del enlace (ej. #inicio, #proyectos)
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
 
         if (targetElement) {
-            // Realiza el scroll suave hacia el elemento de destino
             targetElement.scrollIntoView({
                 behavior: 'smooth'
             });
@@ -30,14 +26,11 @@ const menuPrincipal = document.getElementById('menu-principal');
 
 if (menuToggle && menuPrincipal) {
     menuToggle.addEventListener('click', () => {
-        // Alterna la clase 'active' para mostrar/ocultar el menú (definida en CSS)
         menuPrincipal.classList.toggle('active');
-        
-        // Cambia el ícono de hamburguesa a una 'X' al abrirlo
         const icon = menuToggle.querySelector('i');
         if (menuPrincipal.classList.contains('active')) {
             icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times'); // fa-times es el ícono de la 'X'
+            icon.classList.add('fa-times');
         } else {
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
@@ -47,9 +40,7 @@ if (menuToggle && menuPrincipal) {
     // CERRAR MENÚ después de hacer clic en un enlace (para móviles)
     menuPrincipal.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            // Solo cerramos el menú si estamos en modo móvil (ancho <= 768px)
             if (window.innerWidth <= 768) {
-                // Si se hace clic en un elemento del menú principal (que no es el desplegable)
                 if (!link.closest('.dropdown')) { 
                     menuPrincipal.classList.remove('active');
                     menuToggle.querySelector('i').classList.remove('fa-times');
@@ -65,7 +56,6 @@ if (menuToggle && menuPrincipal) {
 // 3. FUNCIONALIDAD DEL MENÚ DESPLEGABLE (MEJORA TÁCTIL EN MÓVILES)
 // =========================================
 
-// Si la pantalla es pequeña, al hacer clic en 'Juegos', abrimos/cerramos el submenú.
 const dropdownLink = document.querySelector('.dropdown > a');
 
 if (dropdownLink) {
@@ -73,19 +63,16 @@ if (dropdownLink) {
         const content = this.nextElementSibling; 
 
         if (window.innerWidth <= 768) {
-            e.preventDefault(); // Evita que salte directamente a #proyectos
-            
-            // Alternar la visibilidad del submenú
+            e.preventDefault(); 
             content.style.display = content.style.display === 'block' ? 'none' : 'block';
         }
     });
 }
 
 // =========================================
-// 4. (OPCIONAL) CERRAR MENÚ DESPLEGABLE AL CLICKEAR FUERA
+// 4. (OPCIONAL) CERRAR MENÚS AL CLICKEAR FUERA
 // =========================================
 document.addEventListener('click', function(e) {
-    // Si estamos en modo móvil y el menú principal está abierto, al hacer clic fuera se cierra.
     if (window.innerWidth <= 768 && menuPrincipal && menuPrincipal.classList.contains('active')) {
         const isClickInsideMenu = menuPrincipal.contains(e.target);
         const isClickOnToggle = menuToggle.contains(e.target);
@@ -95,10 +82,62 @@ document.addEventListener('click', function(e) {
             menuToggle.querySelector('i').classList.remove('fa-times');
             menuToggle.querySelector('i').classList.add('fa-bars');
             
-            // También aseguramos que el submenú se cierre
             document.querySelectorAll('.dropdown-content').forEach(subContent => {
                 subContent.style.display = 'none';
             });
         }
     }
 });
+
+
+// =========================================
+// 5. LÓGICA DE ÁREA PRIVADA CON CONTRASEÑA
+// =========================================
+
+// !!! CONFIGURACIÓN DE LA CONTRASEÑA (¡Cámbiala aquí!) !!!
+const CONTRASEÑA_SECRETA = "RespaldoWord23"; 
+const URL_PRIVADA = "privado.html";
+
+const enlacePrivado = document.getElementById('enlace-privado');
+const modalPrivado = document.getElementById('modal-privado');
+const btnCerrarModal = document.getElementById('btn-cerrar-modal');
+const btnAcceder = document.getElementById('btn-acceder');
+const inputPassword = document.getElementById('input-password');
+const mensajeError = document.getElementById('mensaje-error');
+
+if (enlacePrivado) {
+    // 1. Abrir el modal al hacer clic en el enlace "Área Privada"
+    enlacePrivado.addEventListener('click', function(e) {
+        e.preventDefault();
+        modalPrivado.style.display = 'block';
+        inputPassword.value = ''; 
+        mensajeError.style.display = 'none'; 
+    });
+
+    // 2. Cerrar el modal
+    btnCerrarModal.addEventListener('click', function() {
+        modalPrivado.style.display = 'none';
+    });
+
+    // 3. Manejar el clic del botón "Acceder"
+    btnAcceder.addEventListener('click', function() {
+        verificarContraseña();
+    });
+    
+    // 4. Permitir Acceso con la tecla ENTER
+    inputPassword.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); 
+            verificarContraseña();
+        }
+    });
+    
+    // 5. Lógica de Verificación
+    function verificarContraseña() {
+        if (inputPassword.value === CONTRASEÑA_SECRETA) {
+            window.location.href = URL_PRIVADA;
+        } else {
+            mensajeError.style.display = 'block';
+        }
+    }
+}

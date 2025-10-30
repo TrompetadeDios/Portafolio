@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>juegos Cristianos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="#inicio">🎮 FeZone </a>
+        </div>
+        
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <nav class="navbar">
+            <ul id="menu-principal">
+                <li><a href="#inicio">Inicio</a></li>
+                
+                <li class="dropdown">
+                    <a href="#proyectos">Juegos <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://trompetadedios.github.io/Desafio-Biblico-parte-2/Juego.html" target="_blank">Desafio Biblico</a></li>
+                        <li><a href="https://trompetadedios.github.io/biblionario/Juego.html" target="_blank">Quien Quiere ser Biblionario cap 1-2</a></li>
+                        <li><a href="https://trompetadedios.github.io/juego-biblionario-cap-3-4/Juego.html" target="_blank">Quien Quiere ser Biblionario cap 3-4</a></li>
+                        </ul>
+                </li>
+                
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="section inicio">
+            <div class="animacion-fondo">
+                </div>
+            
+            <div class="contenido-inicio"> 
+                <h1>¡Bienvenido a FeZone! Tu Punto de Encuentro Digital.</h1>
+                <p>FeZone es la zona segura donde la fe y la diversión se unen. Explora nuestra galería de juegos, creados para inspirar, entretener y conectar a jugadores con valores. Si buscas aventuras con propósito, ¡estás en el lugar correcto!</p>
+                <a href="#proyectos" class="btn-principal">Ver Juegos</a>
+            </div>
+        </section>
+
+        <section id="proyectos" class="section proyectos">
+            <h2>Lista de Juegos</h2>
+            
+            <div class="galeria-juegos">
+                <div class="tarjeta-juego">
+                    <img src="imagenes/imagen-juego-1.JPG" alt="Imagen del Juego 1">
+                    <h3>Desafio Biblico</h3>
+                    <p>165 preguntas al alzar, faciles intermedias y dificiles, con rondas de 15 preguntas esperando ser respondidas</p>
+                    <a href="https://trompetadedios.github.io/Desafio-Biblico-parte-2/Juego.html" target="_blank" class="btn-juego">Jugar / Ver Más</a>
+                </div>
+
+                <div class="tarjeta-juego">
+                    <img src="imagenes/imagen-juego-2.JPG" alt="Imagen del Juego 2">
+                    <h3>Quien Quiere ser Biblionario (cap 1-2)</h3>
+                    <p>Basado en el capitulo 1 y 2 del libro "los 7 rostros de un lider"</p>
+                    <a href="https://trompetadedios.github.io/biblionario/Juego.html" target="_blank" class="btn-juego">Jugar / Ver Más</a>
+                </div>
+
+                <div class="tarjeta-juego">
+                    <img src="imagenes/imagen-juego-3.JPG" alt="Imagen del Juego 3">
+                    <h3>Quien Quiere ser Biblionario (cap 3-4)</h3>
+                    <p>Basado en el capitulo 3 y 4 del libro "los 7 rostros de un lider" </p>
+                    <a href="https://trompetadedios.github.io/juego-biblionario-cap-3-4/Juego.html" target="_blank" class="btn-juego">Jugar / Ver Más</a>
+                </div>
+                
+                </div>
+        </section>
+
+        <section id="contacto" class="section contacto">
+            <h2>Hablemos</h2>
+            <p>¿Tienes una pregunta o te gustaría colaborar? Mándame un mensaje.</p>
+            <form action="https://formsubmit.co/Samuelelias230012@gmail.com" method="POST" class="form-contacto">
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="email" placeholder="Tu Correo Electrónico" required>
+                <textarea placeholder="Tu Mensaje" required></textarea>
+                <button type="submit" class="btn-principal">Enviar Mensaje</button>
+            </form>
+            
+            <div class="info-contacto">
+                <p>También puedes contactarme directamente en: Samuelelias230012@gmail.com</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="redes-sociales">
+            <a href="https://www.facebook.com/SamuelBastardoo/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/elias23samuel/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/samuel-bastardo-a353b7395/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            
+        </div>
+        <p>&copy; 2025 Samuel Elias. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

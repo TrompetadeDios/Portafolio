@@ -1,0 +1,471 @@
+/* ========================================= */
+/* 1. ESTILOS BASE Y GENERALES */
+/* ========================================= */
+
+:root {
+    /* Variables de Color (puedes personalizarlas) */
+    --color-principal: #3a7bd5; /* Azul brillante */
+    --color-secundario: #00d2ff; /* Turquesa */
+    --color-fondo-oscuro: #121212; /* Fondo oscuro (ideal para juegos) */
+    --color-texto-claro: #f0f0f0; /* Texto claro */
+    --color-tarjeta: #1e1e1e; /* Fondo de las tarjetas de juego */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-claro);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: var(--color-secundario);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-principal);
+}
+
+.section {
+    padding: 80px 5%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+    color: var(--color-principal);
+}
+
+.btn-principal {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--color-principal);
+    color: var(--color-texto-claro);
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-principal:hover {
+    background-color: var(--color-secundario);
+    color: var(--color-fondo-oscuro);
+    transform: translateY(-2px);
+}
+
+/* ========================================= */
+/* 2. HEADER Y NAVEGACIÓN (MENÚ DESPLEGABLE) */
+/* ========================================= */
+
+.header {
+    background-color: rgba(18, 18, 18, 0.95); /* Semi-transparente */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    border-bottom: 2px solid var(--color-tarjeta);
+}
+
+.logo a {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--color-secundario);
+}
+
+/* Ocultar el botón de hamburguesa por defecto en desktop */
+.menu-toggle {
+    display: none;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar li {
+    margin-left: 20px;
+}
+
+.navbar a {
+    padding: 8px 10px;
+    display: block;
+    color: var(--color-texto-claro);
+}
+
+.navbar a:hover {
+    color: var(--color-principal);
+}
+
+/* Estilo para el Desplegable */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none; /* Ocultar el contenido por defecto */
+    position: absolute;
+    top: 100%; /* Posicionarlo debajo del enlace principal */
+    left: 0;
+    background-color: var(--color-tarjeta);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    z-index: 1;
+    list-style: none;
+    padding: 5px 0;
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown-content li {
+    margin: 0;
+}
+
+.dropdown-content a {
+    color: var(--color-texto-claro);
+    padding: 12px 16px;
+    text-align: left;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--color-principal);
+    color: var(--color-fondo-oscuro);
+}
+
+/* Mostrar el desplegable cuando se pasa el ratón (Desktop) */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ========================================= */
+/* 3. SECCIONES ESPECÍFICAS */
+/* ========================================= */
+
+/* INICIO */
+.inicio {
+    /* Quitamos la imagen de fondo de la sección, ahora la pone el .animacion-fondo */
+    color: white;
+    justify-content: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative; /* Esencial para posicionar el fondo y el contenido */
+    overflow: hidden; /* Oculta cualquier partícula que se salga de la sección */
+}
+
+/* El contenido que va por encima de la animación */
+.contenido-inicio {
+    position: relative; 
+    z-index: 2; /* Asegura que el texto y botones estén por encima de la animación */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+.inicio h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: white; /* Color blanco para destacar sobre el fondo oscuro */
+}
+
+.inicio p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* PROYECTOS / GALERÍA DE JUEGOS */
+.proyectos {
+    background-color: var(--color-fondo-oscuro);
+}
+
+.galeria-juegos {
+    display: grid;
+    /* Crear una cuadrícula de 3 columnas (en pantallas grandes) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.tarjeta-juego {
+    background-color: var(--color-tarjeta);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-juego:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+.tarjeta-juego img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    aspect-ratio: 16 / 9; /* Relación de aspecto común para capturas de juego */
+}
+
+.tarjeta-juego h3 {
+    color: var(--color-secundario);
+    margin-bottom: 10px;
+}
+
+.btn-juego {
+    display: block;
+    padding: 8px 15px;
+    background-color: var(--color-principal);
+    color: var(--color-texto-claro);
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.btn-juego:hover {
+    background-color: var(--color-secundario);
+}
+
+/* CONTACTO */
+.contacto {
+    background-color: #0d0d0d;
+}
+
+.form-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-contacto input[type="text"],
+.form-contacto input[type="email"],
+.form-contacto textarea {
+    padding: 12px;
+    border: 1px solid var(--color-tarjeta);
+    background-color: var(--color-fondo-oscuro);
+    color: var(--color-texto-claro);
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form-contacto textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.info-contacto {
+    margin-top: 25px;
+}
+
+
+/* ========================================= */
+/* 4. FOOTER Y REDES SOCIALES */
+/* ========================================= */
+
+.footer {
+    background-color: var(--color-tarjeta);
+    padding: 30px 5%;
+    text-align: center;
+}
+
+.redes-sociales {
+    margin-bottom: 15px;
+}
+
+.redes-sociales a {
+    font-size: 1.8em;
+    margin: 0 10px;
+    color: var(--color-texto-claro);
+    transition: color 0.3s ease;
+}
+
+.redes-sociales a:hover {
+    color: var(--color-principal);
+}
+
+
+/* ========================================= */
+/* 5. EFECTO WOW - FONDO ANIMADO DE PARTÍCULAS */
+/* ========================================= */
+
+/* El contenedor principal de la animación */
+.animacion-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f2027 0%, #090055 50%, #0936dd 100%); /* Degradado oscuro */
+    z-index: 1; 
+}
+
+/* Estilo y creación de las partículas (Capa 1) */
+.animacion-fondo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Múltiples sombras para simular muchas partículas de diferentes tamaños */
+    box-shadow: 
+        /* Partículas en movimiento rápido */
+        300px 300px 10px 10px var(--color-principal),
+        -150px 700px 15px 5px var(--color-secundario),
+        800px -100px 20px 0px rgba(255, 255, 255, 0.1),
+        
+        /* Partículas en movimiento más lento */
+        -200px -200px 8px 8px rgba(255, 255, 255, 0.15),
+        100px 500px 12px 6px rgba(255, 255, 255, 0.05),
+        -500px 100px 25px 10px rgba(255, 255, 255, 0.1);
+        
+    /* Animación: Mueve el elemento de forma infinita */
+    animation: moverParticulas 30s linear infinite;
+    animation-delay: 2s; /* Un ligero retraso al inicio */
+}
+
+/* Definición de la Animación de Movimiento 1 */
+@keyframes moverParticulas {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(150px, -150px) rotate(180deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+        opacity: 0.8;
+    }
+}
+
+
+/* Segunda capa de animación para mayor profundidad (Capa 2) */
+.animacion-fondo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 
+        500px 500px 5px 5px var(--color-principal),
+        -300px -400px 10px 5px var(--color-secundario),
+        1000px 600px 18px 0px rgba(255, 255, 255, 0.15);
+        
+    animation: moverParticulas2 45s linear infinite; /* Animación más lenta */
+    animation-delay: 1s;
+}
+
+@keyframes moverParticulas2 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(-200px, 300px) rotate(-360deg);
+    }
+}
+
+
+/* ========================================= */
+/* 6. RESPONSIVE DESIGN (para móviles) */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    
+    .header {
+        flex-direction: row; /* Mantener en fila: logo y botón */
+        padding: 15px 5%;
+    }
+
+    /* Mostrar el botón de hamburguesa en móvil */
+    .menu-toggle {
+        display: block; 
+        font-size: 1.5em;
+        cursor: pointer;
+        color: var(--color-principal);
+        z-index: 1001; /* Asegurar que esté por encima del menú */
+    }
+
+    .navbar {
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Posicionar debajo del header */
+        left: 0;
+        background-color: var(--color-fondo-oscuro); /* Fondo para el menú abierto */
+        border-top: 1px solid var(--color-tarjeta);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Ocultar el menú principal por defecto */
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        display: none; /* Oculto por defecto, se muestra con JS */
+        padding-bottom: 10px;
+    }
+    
+    /* Clase que se agrega con JavaScript para mostrar el menú */
+    .navbar ul.active {
+        display: flex; 
+    }
+
+    .navbar li {
+        margin: 5px 0;
+        width: 90%;
+        text-align: center;
+    }
+    
+    .navbar a {
+        padding: 10px;
+    }
+
+    /* Ajustar el desplegable en móvil (se muestra como un submenú vertical) */
+    .dropdown {
+        width: 100%;
+    }
+    
+    .dropdown-content {
+        position: static; /* Quitar la posición absoluta */
+        width: 100%;
+        box-shadow: none;
+        background-color: #2a2a2a; /* Color ligeramente diferente para los sub-ítems */
+        border-radius: 0;
+    }
+    
+    /* El dropdown ya no necesita hover en móvil */
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+
+    /* INICIO */
+    .inicio h1 {
+        font-size: 2.5em;
+    }
+    
+    .inicio p {
+        font-size: 1em;
+    }
+    
+    /* PROYECTOS: La cuadrícula se ajustará automáticamente gracias a auto-fit */
+}
